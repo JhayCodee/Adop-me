@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Pet from "./Pet";
+import useBreedList from "./useBreedList";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -15,8 +16,7 @@ const SearchParams = () => {
   const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
-  const BREEDS = [""];
-
+  const [breeds] = useBreedList(animal);
   const [pet, setPet] = useState([]);
 
   // useEffect is a hook that allows us to use lifecycle methods in functional components
@@ -79,14 +79,14 @@ const SearchParams = () => {
           Breed
           <select
             id="breed"
-            disabled={BREEDS.length === 0}
+            disabled={breeds.length === 0}
             value={breed}
             onChange={(e) => {
               setBreed(e.target.value);
             }}
           >
             <option />
-            {BREEDS.map((breed) => (
+            {breeds.map((breed) => (
               <option key={breed}>{breed}</option>
             ))}
           </select>

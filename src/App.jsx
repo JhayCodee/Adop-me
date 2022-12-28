@@ -1,16 +1,6 @@
-import React from "react";
-import { createRoot } from "react-dom";
-
-
+import { createRoot } from "react-dom/client";
+import SearchParams from "./SearchParams";
 // Purpose: to render the App component to the DOM
-//         to render the Pet component to the DOM
-const Pet = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", {}, props.name),
-    React.createElement("h2", {}, props.animal),
-    React.createElement("h2", {}, props.breed),
-  ]);
-};
 
 // const App is a function that returns a React element
 // React.createElement(type, props, children)
@@ -19,35 +9,11 @@ const Pet = (props) => {
 // children: array of React elements
 
 const App = () => {
-  // 1. create a div element
-  // 2. add h1 element to the div
-  // 3. add text to the h1 element
-  // 4. return the div element
-
-  return React.createElement(
-    "div",
-    {}, // example of props: {id: "something-important"}
-    [
-      React.createElement("h1", {}, "Adopt Me!"),
-
-      React.createElement(Pet, {
-        name: "Luna",
-        animal: "Dog",
-        breed: "Havanese",
-      }),
-
-      React.createElement(Pet, {
-        name: "Pepper",
-        animal: "Bird",
-        breed: "Cockatiel",
-      }),
-
-      React.createElement(Pet, {
-        name: "Doink",
-        animal: "Cat",
-        breed: "Mixed",
-      }),
-    ]
+  return (
+    <div>
+      <h1>Adopt Me!</h1>
+      <SearchParams />
+    </div>
   );
 };
 
@@ -58,4 +24,4 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 // render the App component to the root element
-root.render(React.createElement(App));
+root.render(<App />);
